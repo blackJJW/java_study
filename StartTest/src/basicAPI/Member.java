@@ -19,4 +19,9 @@ public class Member {
 		}
 		return false; // 매개값이 Member 타입이 아니거나 
 	}                 // id 필드값이 다른 경우 false를 리턴
+	
+	@Override
+	public int hashCode() { // id가 동일한 문자열인 경우 같은 해시 코드를 리턴
+		return id.hashCode();
+	}
 }
