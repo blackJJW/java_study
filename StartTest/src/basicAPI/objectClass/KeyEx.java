@@ -1,4 +1,4 @@
-package basicAPI;
+package basicAPI.objectClass;
 
 import java.util.HashMap;
 

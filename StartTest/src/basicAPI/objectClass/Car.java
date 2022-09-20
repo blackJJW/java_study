@@ -1,4 +1,4 @@
-package basicAPI;
+package basicAPI.objectClass;
 
 public class Car {
 	public String model;

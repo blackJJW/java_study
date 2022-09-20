@@ -1,4 +1,4 @@
-package basicAPI;
+package basicAPI.objectClass;
 
 public class Member1 implements Cloneable{ 
                              // 복제 가능 표시
