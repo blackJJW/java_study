@@ -1,4 +1,4 @@
-package basicAPI.system_class;
+package basicAPI.String_class;
 
 public class ByteToStringEx {
 
