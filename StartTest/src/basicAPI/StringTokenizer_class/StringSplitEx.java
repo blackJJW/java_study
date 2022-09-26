@@ -10,7 +10,5 @@ public class StringSplitEx {
 		for (String tmp : txt) {
 			System.out.println(tmp);
 		}
-
 	}
-
 }
