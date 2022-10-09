@@ -1,20 +1,19 @@
 package multi_thread;
 
 public class ThreadB extends Thread{
-	public boolean stop = false; // 종료 플래그
-	public boolean work = true;  // 작업 진행 여부 플래그
+	private WorkObject workObject;
 	
+	public ThreadB(WorkObject workObject) {
+		// 공유 객체를 매개값으로 받아 필드에 저장
+		this.workObject = workObject;
+	}
+	
+	@Override
 	public void run() {
-		// stop이 true가 되면 while문 종료
-		while(stop) {
-			if(work) {
-				System.out.println("ThreadB 작업 내용");
-			} else {
-				// work가 false가 되면 다른 스레드에게 실행 양보
-				Thread.yield();
-			}
+		// 공유 객체의 methodB를 10번 반복 호출
+		for(int i = 0; i < 10; i++) {
+			workObject.methodB();
 		}
-		System.out.println("ThreadB 종료");
 	}
 
 }
