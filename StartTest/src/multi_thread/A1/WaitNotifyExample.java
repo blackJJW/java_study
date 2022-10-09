@@ -1,6 +1,6 @@
-package multi_thread;
+package multi_thread.A1;
 
-public class WaitNotifyEx {
+public class WaitNotifyExample {
 
 	public static void main(String[] args) {
 		DataBox dataBox = new DataBox();
