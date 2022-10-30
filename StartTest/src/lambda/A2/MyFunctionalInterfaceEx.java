@@ -1,4 +1,4 @@
-package generic.A2;
+package lambda.A2;
 
 public class MyFunctionalInterfaceEx {
 

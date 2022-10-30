@@ -1,6 +1,6 @@
-package generic.A3;
+package lambda.A2;
 
 @FunctionalInterface
 public interface MyFunctionalInterface {
-	public void method(int x);
+	public void method();
 }
