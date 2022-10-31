@@ -19,7 +19,5 @@ public class ConsumerEx {
 		
 		ObjIntConsumer<String> objIntConsumer = (t, i) -> System.out.println(t + i);
 		objIntConsumer.accept("Java", 8);
-
 	}
-
 }
