@@ -20,5 +20,4 @@ public class ArgumentMethodReferencesEx {
 		else if(order == 0) { System.out.println("동일한 문자열"); }
 		else { System.out.println("사전 순으로 나중에 옴"); }
 	}
-
 }
