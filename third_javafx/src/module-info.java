@@ -6,4 +6,5 @@ module third_javafx {
 	opens layoutEx to javafx.graphics, javafx.fxml;
 	opens flowPane to javafx.graphics, javafx.fxml;
 	opens tilePane to javafx.graphics, javafx.fxml;
+	opens gridPane to javafx.graphics, javafx.fxml;
 }
