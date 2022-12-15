@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.TilePane?>
+
+
+<TilePane prefTileHeight="200.0" prefTileWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/apple.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/melon.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/orange.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="143.0" fitWidth="200.0">
+         <image>
+            <Image url="@images/peach.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="112.0" fitWidth="200.0">
+         <image>
+            <Image url="@images/strawberry.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</TilePane>
