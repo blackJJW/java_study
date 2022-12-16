@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="250.0" prefWidth="350.0" 
+			xmlns:fx="http://javafx.com/fxml/1" 
+			xmlns="http://javafx.com/javafx/19" 
+			fx:controller="listener.RootController">
+   <center>
+      <Label fx:id="label" text="JavaFX" BorderPane.alignment="CENTER" />
+   	  	<font>
+   	  		<Font size="0" /> <!-- Label의 기본 폰트 크기는 0 -->
+   	  	</font>
+   </center>
+   <bottom>
+      <Slider fx:id="slider" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
