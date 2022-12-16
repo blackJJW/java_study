@@ -7,4 +7,5 @@ module javafxPrac {
 	opens borderPane to javafx.graphics, javafx.fxml;
 	opens stackPane to javafx.graphics, javafx.fxml;
 	opens eventHandler to javafx.graphics, javafx.fxml;
+	opens fxmlController to javafx.graphics, javafx.fxml;
 }
