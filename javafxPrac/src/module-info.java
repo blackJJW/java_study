@@ -5,4 +5,5 @@ module javafxPrac {
 	opens application to javafx.graphics, javafx.fxml;
 	opens hboxvbox to javafx.graphics, javafx.fxml;
 	opens borderPane to javafx.graphics, javafx.fxml;
+	opens stackPane to javafx.graphics, javafx.fxml;
 }
