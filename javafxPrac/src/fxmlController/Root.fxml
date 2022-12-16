@@ -11,6 +11,6 @@
    <children>
       <Button fx:id="btn1" mnemonicParsing="false" text="버튼1" />
       <Button fx:id="btn2" mnemonicParsing="false" text="버튼2" />
-      <Button fx:id="btn3" mnemonicParsing="false" text="버튼3" />
+      <Button mnemonicParsing="false" text="버튼3" onAction="#handleBtn3Action"/>
    </children>
 </HBox>

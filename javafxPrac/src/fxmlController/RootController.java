@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 public class RootController implements Initializable {
 	@FXML private Button btn1; // btn1 객체 주입
 	@FXML private Button btn2; // btn2 객체 주입
-	@FXML private Button btn3; // btn3 객체 주입
+	// @FXML private Button btn3; // btn3 객체 주입
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -24,7 +24,7 @@ public class RootController implements Initializable {
 		});
 		
 		btn2.setOnAction( event -> handleBtn2Action(event) );
-		btn3.setOnAction( event -> handleBtn3Action(event) );
+		// btn3.setOnAction( event -> handleBtn3Action(event) );
 	}
 	
 	public void handleBtn1Action(ActionEvent event) {
