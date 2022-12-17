@@ -8,4 +8,5 @@ module third_javafx {
 	opens tilePane to javafx.graphics, javafx.fxml;
 	opens gridPane to javafx.graphics, javafx.fxml;
 	opens listener to javafx.graphics, javafx.fxml;
+	opens binding to javafx.graphics, javafx.fxml;
 }
