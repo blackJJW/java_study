@@ -12,39 +12,54 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="150.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buttonControl.RootController">
+<BorderPane prefHeight="150.0" prefWidth="420.0" 
+			xmlns="http://javafx.com/javafx/19" 
+			xmlns:fx="http://javafx.com/fxml/1" 
+			fx:controller="buttonControl.RootController">
    <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
    </padding>
    
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0" spacing="10.0">
+      <HBox alignment="CENTER" prefHeight="100.0" 
+      		prefWidth="400.0" spacing="10.0">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="100.0" spacing="20.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" 
+            	  prefWidth="100.0" spacing="20.0">
                <children>
-                  <CheckBox fx:id="chk1" onAction="#handleChkAction" text="선택1" />
-                  <CheckBox fx:id="chk2" onAction="#handleChkAction" text="선택2" />
+                  <CheckBox fx:id="chk1" onAction="#handleChkAction" 
+                  			text="선택1" />
+                  <CheckBox fx:id="chk2" onAction="#handleChkAction" 
+                  			text="선택2" />
                </children>
             </VBox>
-            <ImageView fx:id="checkImageView" fitWidth="100.0" preserveRatio="true">
+            <ImageView fx:id="checkImageView" fitWidth="100.0" 
+            		   preserveRatio="true">
                <image><Image url="@images/geek.png" /></image>
             </ImageView>
             
-            <Separator orientation="VERTICAL" prefHeight="100.0" />
+            <Separator orientation="VERTICAL" prefHeight="100.0"/>
             
-            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="150.0" spacing="20.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" 
+            	  prefWidth="150.0" spacing="20.0">
                <fx:define><ToggleGroup fx:id="group" /></fx:define>
                <children>
-                  <RadioButton fx:id="rad1" text="BubbleChart" userData="BubbleChart">
+                  <RadioButton fx:id="rad1" text="BubbleChart" 
+                  			   userData="BubbleChart">
                      <toggleGroup>
                         <ToggleGroup fx:id="group" />
                      </toggleGroup></RadioButton>
-                  <RadioButton fx:id="rad2" selected="true" text="BarChart" toggleGroup="$group" userData="BarChart" />
-                  <RadioButton fx:id="rad3" text="AreaChart" toggleGroup="$group" userData="AreaChart" />
+                  <RadioButton fx:id="rad2" selected="true" 
+                  			   text="BarChart" toggleGroup="$group" 
+                  			   userData="BarChart" />
+                  <RadioButton fx:id="rad3" text="AreaChart" 
+                  			   toggleGroup="$group" 
+                  			   userData="AreaChart" />
                </children>
             </VBox>
            
-            <ImageView fx:id="radioImageView" fitWidth="100.0" preserveRatio="true">
+            <ImageView fx:id="radioImageView" fitWidth="100.0" 
+            		   preserveRatio="true">
             	<image><Image url="@images/BarChart.png" /></image>
             </ImageView>
          </children>
@@ -52,7 +67,8 @@
    </center>
 	
 	<bottom>
-		<Button fx:id="btnExit" onAction="#handleBtnExitAction" BorderPane.alignment="CENTER">
+		<Button fx:id="btnExit" onAction="#handleBtnExitAction" 
+				BorderPane.alignment="CENTER">
 			<graphic>
 				<ImageView fitHeight="20.0" fitWidth="20.0"><Image url="@images/exit.png" /></ImageView>
 			</graphic>
