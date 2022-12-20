@@ -11,4 +11,5 @@ module third_javafx {
 	opens binding to javafx.graphics, javafx.fxml;
 	opens bindingsClass to javafx.graphics, javafx.fxml;
 	opens buttonControl to javafx.graphics, javafx.fxml;
+	opens inputControl to javafx.graphics, javafx.fxml;
 }
