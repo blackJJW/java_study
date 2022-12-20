@@ -3,6 +3,7 @@ package buttonControl;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -35,11 +36,25 @@ public class RootController implements Initializable {
 		});
 	}
 	
+	// CheckBox 이벤트 처리
 	public void handleChkAction(ActionEvent e) {
 		if(chk1.isSelected() && chk2.isSelected()) {
 			checkImageView.setImage(new Image(
-					getClass().getResource("images/hat"))
-					));
+					getClass().getResource("images/glasses_hair.png").toString()));
+		} else if(chk1.isSelected()) {
+			checkImageView.setImage(new Image(
+					getClass().getResource("images/glasses.png").toString()));
+		} else if(chk2.isSelected()) {
+			checkImageView.setImage(new Image(
+					getClass().getResource("images/hair.png").toString()));
+		} else {
+			checkImageView.setImage(new Image(
+					getClass().getResource("images/geek.png").toString()));
 		}
+	}
+	
+	// Button 이벤트 처리
+	public void handleBtnExitAction(ActionEvent e) {
+		Platform.exit();
 	}
 }
