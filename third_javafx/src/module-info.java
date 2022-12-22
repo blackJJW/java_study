@@ -12,4 +12,7 @@ module third_javafx {
 	opens bindingsClass to javafx.graphics, javafx.fxml;
 	opens buttonControl to javafx.graphics, javafx.fxml;
 	opens inputControl to javafx.graphics, javafx.fxml;
+	opens tableView to javafx.graphics, javafx.fxml;
+	
+	exports tableView;
 }
