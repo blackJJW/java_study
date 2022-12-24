@@ -1,6 +1,7 @@
 module third_javafx {
 	requires javafx.controls;
 	requires javafx.fxml;
+	requires javafx.media;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens layoutEx to javafx.graphics, javafx.fxml;
@@ -13,6 +14,7 @@ module third_javafx {
 	opens buttonControl to javafx.graphics, javafx.fxml;
 	opens inputControl to javafx.graphics, javafx.fxml;
 	opens tableView to javafx.graphics, javafx.fxml;
+	opens mediaView to javafx.graphics, javafx.fxml, javafx.media;
 	
 	exports tableView;
 }
