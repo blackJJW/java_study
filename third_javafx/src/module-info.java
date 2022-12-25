@@ -15,6 +15,7 @@ module third_javafx {
 	opens inputControl to javafx.graphics, javafx.fxml;
 	opens tableView to javafx.graphics, javafx.fxml;
 	opens mediaView to javafx.graphics, javafx.fxml, javafx.media;
+	opens chartControl to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
