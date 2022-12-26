@@ -17,6 +17,8 @@ module third_javafx {
 	opens mediaView to javafx.graphics, javafx.fxml, javafx.media;
 	opens chartControl to javafx.graphics, javafx.fxml;
 	opens menuBarToolBar to javafx.graphics, javafx.fxml;
+	opens dialog to javafx.graphics, javafx.fxml;
+	opens javaFXCSS to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
