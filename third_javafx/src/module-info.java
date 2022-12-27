@@ -19,6 +19,8 @@ module third_javafx {
 	opens menuBarToolBar to javafx.graphics, javafx.fxml;
 	opens dialog to javafx.graphics, javafx.fxml;
 	opens javaFXCSS to javafx.graphics, javafx.fxml;
+	opens javaFxExternalCSS to javafx.graphics, javafx.fxml;
+	opens css_2 to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
