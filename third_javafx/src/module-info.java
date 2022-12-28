@@ -28,6 +28,7 @@ module third_javafx {
 	opens skin to javafx.graphics, javafx.fxml;
 	opens runLater to javafx.graphics, javafx.fxml;
 	opens task to javafx.graphics, javafx.fxml;
+	opens task_2 to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
