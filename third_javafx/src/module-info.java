@@ -24,6 +24,7 @@ module third_javafx {
 	opens border to javafx.graphics, javafx.fxml;
 	opens background to javafx.graphics, javafx.fxml;
 	opens font to javafx.graphics, javafx.fxml;
+	opens shadow to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
