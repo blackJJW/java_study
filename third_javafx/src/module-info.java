@@ -30,6 +30,7 @@ module third_javafx {
 	opens task to javafx.graphics, javafx.fxml;
 	opens task_2 to javafx.graphics, javafx.fxml;
 	opens service to javafx.graphics, javafx.fxml;
+	opens sceneMove to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
