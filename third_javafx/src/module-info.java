@@ -29,6 +29,7 @@ module third_javafx {
 	opens runLater to javafx.graphics, javafx.fxml;
 	opens task to javafx.graphics, javafx.fxml;
 	opens task_2 to javafx.graphics, javafx.fxml;
+	opens service to javafx.graphics, javafx.fxml;
 	
 	exports tableView;
 }
