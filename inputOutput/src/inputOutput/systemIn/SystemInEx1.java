@@ -15,7 +15,7 @@ public class SystemInEx1 {
 		// 키보드 입력 스트림 얻기
 		InputStream is = System.in;
 		
-		// 아스크 코드를 읽고 문자로 리턴
+		// 아스키 코드를 읽고 문자로 리턴
 		char inputChar = (char) is.read();
 		
 		switch(inputChar) {
