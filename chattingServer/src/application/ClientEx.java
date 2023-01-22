@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
@@ -56,7 +57,24 @@ public class ClientEx extends Application {
 	
 	// stopClient() 메소드는 [stop] 버튼을 클릭하면 호출
 	void stopClient() {
-		// 연결 끊기 코드
+		try {
+			// UI를 변경하기 위해 Platform.runLater()가 사용
+			Platform.runLater(() -> {
+				// "[ 연결 끊음 ]"을 출력하도록 displayText()를 호출
+				displayText("[ 연결 끊음 ]");
+				// [stop] 버튼의 글자를 [ start ]로 변경
+				btnConn.setText("start");
+				// [send] 버튼을 비활성화
+				btnSend.setDisable(true);
+			});
+			
+			// 연결 끊기
+			// socket 필드가 null이 아니고, 현재 닫혀 있지 않을 경우
+			if(socket != null && !socket.isClosed()) {
+				// Socket을 닫는다.
+				socket.close();
+			}
+		} catch(IOException e) {}
 	}
 	
 	// receive() 메소드는 서버에서 보낸 데이터를 받는다.
