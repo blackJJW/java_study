@@ -2,11 +2,19 @@ package application;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 // JavaFX 메인 클래스로 만들기 위해 Application을 상속
 public class ClientEx extends Application {
@@ -128,10 +136,100 @@ public class ClientEx extends Application {
 	// send() 메소드는 [send] 버튼을 클릭하면 호출
 	// 서버로 데이터를 보낸다.
 	void send(String data) {
-		// 데이터 전송 코드
+		// 데이터를 서버로 보내는 새로운 작업 스레드를 생성
+		Thread thread = new Thread() { // 스레드 생성
+			// run()을 재정의
+			@Override
+			public void run() {
+				try {
+					// 보낼 문자열로부터 UTF-8로 인코딩한 바이트 배열을 얻는다.
+					byte[] byteArr = data.getBytes("UTF-8");
+					
+					// 서버로 데이터 보내기
+					// Socket에서 출력 스트림을 얻는다.
+					OutputStream outputStream = socket.getOutputStream();
+					// 바이트 배열을 매개값으로 write() 메소드를 호출
+					outputStream.write(byteArr);
+					// 출력 스트림의 내부 버퍼를 완전히 비우도록 flush()를 호출
+					outputStream.flush();
+					
+					// "[ 보내기 완료 ]"를 출력하도록 displayText()를 호출
+					Platform.runLater(() -> displayText("[ 보내기 완료 ]"));
+				} catch(Exception e) {
+					/* 예외가 발생하면 "[ 서버 통신 안됨 ]"을 출력하도록
+					 * displayText()를 호출
+					 */
+					Platform.runLater(() -> displayText("[ 서버 통신 안됨 ]"));
+					// stopClient를 호출
+					stopClient();
+				}
+			}
+		};
+		// 작업 스레드를 시작
+		thread.start(); // 스레드 생성
 	}
 	
 	/////////////////////////////////
-	// UI 생성 코드는 레이아웃을 구성하고 ClientEx를 실행
-	// UI 생성 코드
+	TextArea txtDisplay;
+	TextField txtInput;
+	Button btnConn, btnSend;
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception{
+		BorderPane root = new BorderPane();
+		root.setPrefSize(500, 300);
+		
+		txtDisplay = new TextArea();
+		txtDisplay.setEditable(false);
+		BorderPane.setMargin(txtDisplay, new Insets(0, 0, 2, 0));
+		root.setCenter(txtDisplay);
+		
+		BorderPane bottom = new BorderPane();
+		txtInput = new TextField();
+		txtInput.setPrefSize(60, 30);
+		BorderPane.setMargin(txtInput, new Insets(0, 1, 1, 1));
+		
+		btnConn = new Button("start");
+		btnConn.setPrefSize(60, 30);
+		
+		// start와 stop 버튼을 클릭했을 때 이벤트 처리 코드
+		btnConn.setOnAction(e -> {
+			if(btnConn.getText().equals("start")) {
+				startClient();
+			} else if(btnConn.getText().equals("stop")) {
+				stopClient();
+			}
+		});
+		
+		btnSend = new Button("send");
+		btnSend.setPrefSize(60, 30);
+		btnSend.setDisable(true);
+		
+		// send 버튼을 클릭했을 때 이벤트 처리 코드
+		btnSend.setOnAction(e -> send(txtInput.getText()));
+		
+		bottom.setCenter(txtInput);
+		bottom.setLeft(btnConn);
+		bottom.setRight(btnSend);
+		
+		root.setBottom(bottom);
+		
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("app.css").toString());
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Client");
+		
+		// 윈도우 우측 상단 닫기 버튼을 클릭했을 때 이벤트 처리 코드
+		primaryStage.setOnCloseRequest(event -> stopClient());
+		primaryStage.show();
+	}
+	
+	// TextArea에 문자열을 추가하는 메소드
+	void displayText(String text) {
+		txtDisplay.appendText(text + "\n");
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
