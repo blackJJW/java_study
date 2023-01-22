@@ -3,6 +3,7 @@ package application;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
@@ -61,7 +62,42 @@ public class ServerEx extends Application {
 	} // startServer() 메소드 끝 
 	
 	void stopServer() {
-		// 서버 종료 코드
+		try {
+			// 모든 Socket 닫기
+			// connections 컬렉션으로부터 반복자를 얻음
+			Iterator<Client> iterator = connections.iterator();
+			
+			// while문으로 반복자를 반복
+			while(iterator.hasNext()) {
+				// 반복자로부터 Client를 하나씩 얻는다.
+				Client client = iterator.next();
+				// Client가 가지고 있는 Socket을 닫는다.
+				client.socket.close();
+				// connections 컬렉션에서 Client를 제거
+				iterator.remove();
+			}
+			
+			// ServerSocket 닫기
+			// ServerSocket이 null이 아니고, 닫혀있지 않으면
+			if(serverSocket != null && !serverSocket.isClosed()) {
+				// ServerSocket 닫음
+				serverSocket.close();
+			}
+			
+			// ExecutorService 종료
+			// ExecutorService가 null이 아니고, 종료 상태가 아니면
+			if(executorService != null && !executorService.isShutdown()) {
+				// ExecutorService 종료
+				executorService.shutdown();
+			}
+			// 작업 스레드는 UI를 변경하지 못하므로 Platfrom.runLater()가 사용됨
+			Platform.runLater(() -> {
+				// "[ 서버 멈춤 ]"을 출력하도록 displayText()를 호출
+				displayText("[ 서버 멈춤 ]");
+				// [stop] 버튼의 글자를 [start]로 변경
+				btnStartStop.setText("start");
+			});
+		} catch (Exception e) {}
 	}
 	
 	class Client {
