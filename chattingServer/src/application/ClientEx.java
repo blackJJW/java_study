@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
@@ -79,7 +80,28 @@ public class ClientEx extends Application {
 	
 	// receive() 메소드는 서버에서 보낸 데이터를 받는다.
 	void receive() {
-		// 데이터 받기 코드
+		while(true) {
+			try {
+				byte[] byteArr = new byte[100];
+				InputStream inputStream = socket.getInputStream();
+				
+				// 서버가 비정상적으로 종료했을 경우 IOException 발생
+				// 데이터 받기
+				int readByteCount = inputStream.read(byteArr);
+				
+				// 서버가 정상적으로 Socket의 close()를 호출했을 경우
+				if(readByteCount == -1) { throw new IOException(); }
+				
+				// 문자열로 변환
+				String data = new String(byteArr, 0, readByteCount, "UTF-8");
+				
+				Platform.runLater(() -> displayText("[ 받기 완료 ] " + data));
+			} catch(Exception e) {
+				Platform.runLater(() -> displayText("[ 서버 통신 안됨 ]"));
+				stopClient();
+				break;
+			}
+		}
 	}
 	
 	// send() 메소드는 [send] 버튼을 클릭하면 호출
