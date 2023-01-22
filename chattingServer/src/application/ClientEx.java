@@ -80,26 +80,47 @@ public class ClientEx extends Application {
 	
 	// receive() 메소드는 서버에서 보낸 데이터를 받는다.
 	void receive() {
+		// 반복적으로 읽기 위해 무한 루프를 작성
 		while(true) {
 			try {
+				// 받은 데이터를 저장한 길이가 100인 바이트 배열 생성
 				byte[] byteArr = new byte[100];
+				// Socket으로부터 InputStream을 얻는다.
 				InputStream inputStream = socket.getInputStream();
 				
 				// 서버가 비정상적으로 종료했을 경우 IOException 발생
 				// 데이터 받기
+				/* InputStream의 read() 메소드를 호출
+				 * 서버가 데이터를 보내기 전까지 블로킹되며,
+				 * 데이터를 받으면 byteArr엦 저장하고 받은 바이트 개수는 
+				 * readByteCount에 저장
+				 */
 				int readByteCount = inputStream.read(byteArr);
 				
-				// 서버가 정상적으로 Socket의 close()를 호출했을 경우
+				/* 서버가 정상적으로 Socket의 close()를 호출했을 경우
+				 * 위의 read() 메소드는 -1을 리턴
+				 * 이 경우 IOException을 강제로 발생시킨다.
+				 */
 				if(readByteCount == -1) { throw new IOException(); }
 				
 				// 문자열로 변환
+				/* 정상적으로 데이터를 받았을 경우,
+				 * String(byteArr, 0, readByteCount, "UTF-8")을 이용해서
+				 * UTF-8로 디코딩한 문자열을 받는다.
+				 */
 				String data = new String(byteArr, 0, readByteCount, "UTF-8");
 				
+				// "[ 받기 완료 ] + 받은 문자열"을 출력하도록 displayText()를 호출
 				Platform.runLater(() -> displayText("[ 받기 완료 ] " + data));
 			} catch(Exception e) {
+				/* 서버가 비정상적으로 연결을 끊게 되면 IOException이 발생하고, 
+				 * 서버 측 Socket이 close9)를 호출해서 정상적으로 연결을 끊게 되면 
+				 * IOException이 발생
+				 * 예외가 발생하면 "[ 서버 통신 안됨 ]"울 출력하도록 displayText()를 호출
+				 */
 				Platform.runLater(() -> displayText("[ 서버 통신 안됨 ]"));
-				stopClient();
-				break;
+				stopClient(); // stopClient()를 호출
+				break; // break를 실행해서 무한 루프를 빠져나온다.
 			}
 		}
 	}
