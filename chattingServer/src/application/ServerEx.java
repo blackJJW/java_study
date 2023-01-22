@@ -100,8 +100,28 @@ public class ServerEx extends Application {
 		} catch (Exception e) {}
 	}
 	
+	// Client를 ServerEx의 내부 클래스로 선언
 	class Client {
-		// 데이터 통신 코드
+		// Socket 필드를 선언
+		Socket socket;
+		
+		// Client 생성자를 선언
+		Client(Socket socket){
+			// 매개값으로 받은 Socket을 필드값으로 저장
+			this.socket = socket;
+			// receive() 메소드를 호출
+			receive();
+		}
+		
+		// 데이터를 받기 위해 receive() 메소드를 선언
+		void receive() {
+			// 데이터 받기 코드
+		}
+		
+		// 데이터를 보내기 위해 send() 메소들르 선언
+		void send(String data) {
+			// 데이터 전송 코드
+		}
 	}
 	
 	//////////////////////////////////
