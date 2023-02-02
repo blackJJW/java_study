@@ -184,8 +184,29 @@ public class ServerEx extends Application {
 		  executorService.submit(runnable);
 		}
 	  // 데이터를 클라이언트로 보내기 위해 send() 메소드를 선언
-		void send(String data) { 
-			// 데이터 전송 코드 
+		void send(String data) {
+			Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					try {
+						// 클라이언트로 보내기
+						Charset charset = Charset.forName("UTF-8");
+		                ByteBuffer byteBuffer = charset.encode(data);
+		                socketChannel.write(byteBuffer);
+					} catch(Exception e) {
+						try {
+							String message = "[ 클라이언트 통신 안됨 : "
+		              + socketChannel.getRemoteAddress() + " : "
+		              + Thread.currentThread().getName() + " ]";
+		          Platform.runLater(() -> displayText(message));
+		          connections.remove(Client.this);
+		          socketChannel.close();
+						} catch (IOException e2) {}
+					}
+				}
+			};
+		  // 스레드풀에서 처리
+		  executorService.submit(runnable);
 		}
 	}
 
