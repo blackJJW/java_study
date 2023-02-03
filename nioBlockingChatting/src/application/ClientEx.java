@@ -172,7 +172,7 @@ public class ClientEx extends Application {
 		txtDisplay.appendText(text + "\n");
 	}
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		launch(args);
 	}
 }
